@@ -32,7 +32,7 @@ const BarCharts = (props) => {
       enabled: false,
     },
     tooltip: {
-      pointFormat: props.toolTipText + ": <b>{point.y} </b>",
+      pointFormat: "" + props.tooltipText + ": <b>{point.y} </b>",
     },
     series: [
       {

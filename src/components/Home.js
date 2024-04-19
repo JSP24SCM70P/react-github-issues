@@ -225,6 +225,37 @@ export default function Home() {
               yaxisText={'Issues'} tooltipText={'Issues'}
               data={githubRepoData?.closed}
             />}
+            
+            {!starsFlag && !forksFlag && (<><div>
+                <Typography component="h4">
+                  The day of the week maximum number of issues created
+                </Typography>
+                {/* render the image of The day of the week maximum number of issues created */}
+                <img
+                  src={githubRepoData?.createdAtImageUrls?.created_issues_max_day}
+                  alt={"Image for The day of the week maximum number of issues created "}
+                  loading={"lazy"} />
+              </div><div>
+                  <Typography component="h4">
+                    The day of the week maximum number of issues closed
+                  </Typography>
+                  {/* render the image of The day of the week maximum number of issues closed*/}
+                  <img
+                    src={githubRepoData?.createdAtImageUrls?.closed_issues_max_day}
+                    alt={"Image for The day of the week maximum number of issues closed"}
+                    loading={"lazy"} />
+                </div>
+                <div>
+                  <Typography component="h4">
+                  The month of the year that has maximum number of issues closed
+                  </Typography>
+                  {/* render the image of The month of the year that has maximum number of issues closed*/}
+                  <img
+                    src={githubRepoData?.createdAtImageUrls?.closed_issues_max_month}
+                    alt={"Image for The month of the year that has maximum number of issues closed"}
+                    loading={"lazy"} />
+                </div>
+                </>)}
             <Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
             />
@@ -236,6 +267,7 @@ export default function Home() {
                 Keras LSTM based on past month
               </Typography>
 
+              
               <div>
                 <Typography component="h4">
                   Model Loss for Created Issues
@@ -317,6 +349,57 @@ export default function Home() {
                 <img
                   src={githubRepoData?.closedAtImageUrls?.all_issues_data_image}
                   alt={"All Issues Data for Closed Issues"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
+            <Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />
+            {/* Rendering Timeseries Forecasting of Pull Issues using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of Pull Issues using Tensorflow and
+                Keras LSTM based on past month
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Model Loss for Pull Issues
+                </Typography>
+                {/* Render the model loss image for pull issues */}
+                <img
+                  src={githubRepoData?.pulledAtImageUrls?.model_loss_image_url}
+                  alt={"Model Loss for pull Issues"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  LSTM Generated Data for pull requests
+                </Typography>
+                {/* Render the LSTM generated image for pull issues*/}
+                <img
+                  src={
+                    githubRepoData?.pulledAtImageUrls?.lstm_generated_image_url
+                  }
+                  alt={"LSTM Generated Data for pull Issues"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  All Issues Data for Pull Requests
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.pulledAtImageUrls?.all_issues_data_image
+                  }
+                  alt={"All Issues Data for pull requests"}
                   loading={"lazy"}
                 />
               </div>

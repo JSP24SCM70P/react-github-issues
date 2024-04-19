@@ -12,6 +12,7 @@ module.exports = function (app) {
       // update the flask Google Cloud url
 
       target: "https://flask-time-series-azim7m2kfa-uc.a.run.app",
+      //target: "http://127.0.0.1:5000",
       changeOrigin: true,
     })
   );
