@@ -405,6 +405,108 @@ export default function Home() {
               </div>
             </div>)}
 
+            <Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />
+            {/* Rendering Timeseries Forecasting of commits using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of Commits using Tensorflow and
+                Keras LSTM 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Model Loss for Commits
+                </Typography>
+                {/* Render the model loss image for commits */}
+                <img
+                  src={githubRepoData?.commitsAtImageUrls?.model_loss_image_url}
+                  alt={"Model Loss for commits"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  LSTM Generated Data for commits
+                </Typography>
+                {/* Render the LSTM generated image for commits*/}
+                <img
+                  src={
+                    githubRepoData?.commitsAtImageUrls?.lstm_generated_image_url
+                  }
+                  alt={"LSTM Generated Data for commits"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  All Issues Data for commits
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.commitsAtImageUrls?.all_issues_data_image
+                  }
+                  alt={"All Issues Data for commits"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
+            <Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Model Loss for releases
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.releasesAtImageUrls?.model_loss_image_url}
+                  alt={"Model Loss for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  LSTM Generated Data for releases
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.releasesAtImageUrls?.lstm_generated_image_url
+                  }
+                  alt={"LSTM Generated Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  All Issues Data for releases
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.releasesAtImageUrls?.all_issues_data_image
+                  }
+                  alt={"All Issues Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
             {starsFlag && !forksFlag && <BarCharts
               title={`Star count of every repo`}
               yaxisText={'Stars'} tooltipText={'Stars'}
