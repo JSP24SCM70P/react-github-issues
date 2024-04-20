@@ -507,6 +507,256 @@ export default function Home() {
               </div>
             </div>)}
 
+            <Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of created issues using <strong>StatModels</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Observation for created_at issues
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.createdAtStatImageUrls?.observation_url}
+                  alt={"Model Loss for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  actual vs pred statmodels for created issues
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.createdAtStatImageUrls?.stat_pred_url
+                  }
+                  alt={"LSTM Generated Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast with statmodels for created_at issues
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.createdAtStatImageUrls?.stat_forecast_url
+                  }
+                  alt={"All Issues Data for created issues using stat models"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
+            <Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of closed issues using <strong>StatModels</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Observation for closed_at issues
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.closedAtStatImageUrls?.observation_url}
+                  alt={"Model Loss for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  actual vs pred statmodels of closed issues
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.closedAtStatImageUrls?.stat_pred_url
+                  }
+                  alt={"LSTM Generated Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast graph with statmodels for closed_at issues
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.closedAtStatImageUrls?.stat_forecast_url
+                  }
+                  alt={"All Issues Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
+            <Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of pull requests using <strong>StatModels</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Observation for pull requests
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.pulledAtStatImageUrls?.observation_url}
+                  alt={"Model Loss for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  actual vs pred statmodels of pull requests
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.pulledAtStatImageUrls?.stat_pred_url
+                  }
+                  alt={"LSTM Generated Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast graph with statmodels for pulled requests
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.pulledAtStatImageUrls?.stat_forecast_url
+                  }
+                  alt={"All Issues Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
+            <Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of commits using <strong>StatModels</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Observation for commits
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.commitsAtStatImageUrls?.observation_url}
+                  alt={"Model Loss for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  actual vs pred statmodels of commits
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.commitsAtStatImageUrls?.stat_pred_url
+                  }
+                  alt={"LSTM Generated Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast graph with statmodels for commits
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.commitsAtStatImageUrls?.stat_forecast_url
+                  }
+                  alt={"All Issues Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
+            <Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of releases using <strong>StatModels</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Observation for releases
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.releasesAtStatImageUrls?.observation_url}
+                  alt={"Model Loss for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  actual vs pred statmodels of releases
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.releasesAtStatImageUrls?.stat_pred_url
+                  }
+                  alt={"LSTM Generated Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast graph with statmodels for releases
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.releasesAtStatImageUrls?.stat_forecast_url
+                  }
+                  alt={"All Issues Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
             {starsFlag && !forksFlag && <BarCharts
               title={`Star count of every repo`}
               yaxisText={'Stars'} tooltipText={'Stars'}
