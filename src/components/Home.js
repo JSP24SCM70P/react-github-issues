@@ -877,6 +877,44 @@ export default function Home() {
               
             </div>)}
 
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />)}
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of pull requests using <strong>Facebook Prophet</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Forecast for pull requests (fb prophet)
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.pulledAtFbImageUrls?.forecast_url}
+                  alt={"forecast for pull requests fb prophet"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast components for closed issues (fb prophet)
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.pulledAtFbImageUrls?.forecast_component_url
+                  }
+                  alt={"fb forecast component of pull requests"}
+                  loading={"lazy"}
+                />
+              </div>
+              
+            </div>)}
+
             {starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && <BarCharts
               title={`Star count of every repo `}
               yaxisText={'Stars'} tooltipText={'Stars'}
