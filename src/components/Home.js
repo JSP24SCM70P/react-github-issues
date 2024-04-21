@@ -901,12 +901,88 @@ export default function Home() {
               </div>
               <div>
                 <Typography component="h4">
-                  forecast components for closed issues (fb prophet)
+                  forecast components for pull requests (fb prophet)
                 </Typography>
                 {/* Render the LSTM generated image for releases*/}
                 <img
                   src={
                     githubRepoData?.pulledAtFbImageUrls?.forecast_component_url
+                  }
+                  alt={"fb forecast component of pull requests"}
+                  loading={"lazy"}
+                />
+              </div>
+              
+            </div>)}
+
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />)}
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of commits using <strong>Facebook Prophet</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Forecast for commits (fb prophet)
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.commitsAtFbImageUrls?.forecast_url}
+                  alt={"forecast for pull requests fb prophet"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast components for commits (fb prophet)
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.commitsAtFbImageUrls?.forecast_component_url
+                  }
+                  alt={"fb forecast component of pull requests"}
+                  loading={"lazy"}
+                />
+              </div>
+              
+            </div>)}
+
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />)}
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of releases using <strong>Facebook Prophet</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Forecast for releases (fb prophet)
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.releasesAtFbImageUrls?.forecast_url}
+                  alt={"forecast for pull requests fb prophet"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast components for releases (fb prophet)
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.releasesAtFbImageUrls?.forecast_component_url
                   }
                   alt={"fb forecast component of pull requests"}
                   loading={"lazy"}
