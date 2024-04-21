@@ -24,6 +24,8 @@ import ListItemText from "@mui/material/ListItemText";
 import BarCharts from "./BarCharts";
 import Loader from "./Loader";
 import { ListItemButton } from "@mui/material";
+import LineCharts from "./LineCharts";
+import StackBarCharts from "./StackBarCharts";
 
 const drawerWidth = 240;
 // List of GitHub repositories 
@@ -55,6 +57,14 @@ const repositories = [
   {
     key: "openai/openai-cookbook$elastic/elasticsearch$openai/openai-python$milvus-io/pymilvus$sebholstein/angular-google-maps",
     value: "Fork count of all repos"
+  },
+  {
+    key: "openai/openai-cookbook@elastic/elasticsearch@openai/openai-python@milvus-io/pymilvus@sebholstein/angular-google-maps",
+    value: "Issues Stack bar chart"
+  },
+  {
+    key: "openai/openai-cookbook*elastic/elasticsearch*openai/openai-python*milvus-io/pymilvus*sebholstein/angular-google-maps",
+    value: "Issues line chart"
   }
 ];
 
@@ -80,6 +90,8 @@ export default function Home() {
 
   const [starsFlag, setStarsFlag] = useState(false);
   const [forksFlag, setForksFlag] = useState(false);
+  const [stackIssuesFlag, setStackIssuesFlag] = useState(false);
+  const [lineIssuesFlag, setLineIssuesFlag] = useState(false);
 
   /*
   
@@ -109,7 +121,7 @@ export default function Home() {
         "Content-Type": "application/json",
       },
       // Append the repository key to request body
-      body: JSON.stringify({ repository: repository.key, starlist_status: starsFlag, forklist_status: forksFlag }),
+      body: JSON.stringify({ repository: repository.key, starlist_status: starsFlag, forklist_status: forksFlag, stackissues_status: stackIssuesFlag, linechart_status: lineIssuesFlag }),
     };
 
     /*
@@ -181,6 +193,8 @@ export default function Home() {
                   if (repo.value.toLowerCase() === "Star count of all repos".toLowerCase()) {
                     setStarsFlag(true);
                     setForksFlag(false);
+                    setLineIssuesFlag(false);
+                    setStackIssuesFlag(false);
                     //setActiveButton(repo.value);
                   }
                   else if(repo.value.toLowerCase() === "Fork count of all repos".toLowerCase()){
@@ -188,11 +202,35 @@ export default function Home() {
                     //setActiveButton(repo.value);
                     setForksFlag(true);
                     setStarsFlag(false);
+                    setLineIssuesFlag(false);
+                    setStackIssuesFlag(false);
+
+                  }
+                  else if(repo.value.toLowerCase() === "Issues Stack bar chart".toLowerCase()){
+                    
+                    //setActiveButton(repo.value);
+                    setStackIssuesFlag(true);
+                    setForksFlag(false);
+                    setStarsFlag(false);
+                    setLineIssuesFlag(false);
+                    
+
+                  }
+                  else if(repo.value.toLowerCase() === "Issues line chart".toLowerCase()){
+                    
+                    //setActiveButton(repo.value);
+                    setLineIssuesFlag(true);
+                    setForksFlag(false);
+                    setStarsFlag(false);
+                    
+                    setStackIssuesFlag(false);
 
                   }
                   else{
                     setStarsFlag(false);
                     setForksFlag(false);
+                    setLineIssuesFlag(false);
+                    setStackIssuesFlag(false);
                   }
                   eventHandler(repo);
                 }}
@@ -214,19 +252,25 @@ export default function Home() {
         ) : (
           <div>
             {/* Render barchart component for a monthly created issues for a selected repositories*/}
-            {!starsFlag && !forksFlag && <BarCharts
-              title={`Monthly Created Issues for ${repository.value} in last 1 year`}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && <BarCharts
+              title={`Monthly Created Issues for ${repository.value} in last 2 year`}
               yaxisText={'Issues'} tooltipText={'Issues'}
               data={githubRepoData?.created}
             />}
             {/* Render barchart component for a monthly created issues for a selected repositories*/}
-            {!starsFlag && !forksFlag && <BarCharts
-              title={`Monthly Closed Issues for ${repository.value} in last 1 year`}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && <BarCharts
+              title={`Monthly Closed Issues for ${repository.value} in last 2 year`}
               yaxisText={'Issues'} tooltipText={'Issues'}
               data={githubRepoData?.closed}
             />}
+
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && <BarCharts
+              title={`Weekly Closed Issues for ${repository.value} in last 2 year`}
+              yaxisText={'Issues'} tooltipText={'Issues'}
+              data={githubRepoData?.week_closed}
+            />}
             
-            {!starsFlag && !forksFlag && (<><div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<><div>
                 <Typography component="h4">
                   The day of the week maximum number of issues created
                 </Typography>
@@ -256,12 +300,12 @@ export default function Home() {
                     loading={"lazy"} />
                 </div>
                 </>)}
-            <Divider
+                {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of Created Issues using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of Created Issues using Tensorflow and
                 Keras LSTM based on past month
@@ -308,7 +352,7 @@ export default function Home() {
             </div>)}
             {/* Rendering Timeseries Forecasting of Closed Issues using Tensorflow and
                 Keras LSTM  */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Divider
                 sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
               />
@@ -354,12 +398,12 @@ export default function Home() {
               </div>
             </div>)}
 
-            <Divider
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of Pull Issues using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of Pull Issues using Tensorflow and
                 Keras LSTM based on past month
@@ -405,12 +449,12 @@ export default function Home() {
               </div>
             </div>)}
 
-            <Divider
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of commits using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of Commits using Tensorflow and
                 Keras LSTM 
@@ -456,12 +500,12 @@ export default function Home() {
               </div>
             </div>)}
 
-            <Divider
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of releases using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of releases using Tensorflow and
                 Keras LSTM 
@@ -507,12 +551,12 @@ export default function Home() {
               </div>
             </div>)}
 
-            <Divider
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of releases using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of created issues using <strong>StatModels</strong> 
               </Typography>
@@ -557,12 +601,12 @@ export default function Home() {
               </div>
             </div>)}
 
-            <Divider
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of releases using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of closed issues using <strong>StatModels</strong> 
               </Typography>
@@ -607,12 +651,12 @@ export default function Home() {
               </div>
             </div>)}
 
-            <Divider
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of releases using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of pull requests using <strong>StatModels</strong> 
               </Typography>
@@ -657,12 +701,12 @@ export default function Home() {
               </div>
             </div>)}
 
-            <Divider
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of releases using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of commits using <strong>StatModels</strong> 
               </Typography>
@@ -707,12 +751,12 @@ export default function Home() {
               </div>
             </div>)}
 
-            <Divider
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
-            />
+            />)}
             {/* Rendering Timeseries Forecasting of releases using Tensorflow and
                 Keras LSTM */}
-            {!starsFlag && !forksFlag && (<div>
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of releases using <strong>StatModels</strong> 
               </Typography>
@@ -757,13 +801,99 @@ export default function Home() {
               </div>
             </div>)}
 
-            {starsFlag && !forksFlag && <BarCharts
-              title={`Star count of every repo`}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />)}
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of created issues using <strong>Facebook Prophet</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Forecast for created_at issues (fb prophet)
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.createdAtFbImageUrls?.forecast_url}
+                  alt={"forecast for created issues fb prophet"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast components for created issues (fb prophet)
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.createdAtFbImageUrls?.forecast_component_url
+                  }
+                  alt={"LSTM Generated Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              
+            </div>)}
+
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />)}
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of closed issues using <strong>Facebook Prophet</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Forecast for closed_at issues (fb prophet)
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.closedAtFbImageUrls?.forecast_url}
+                  alt={"forecast for closed issues fb prophet"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast components for closed issues (fb prophet)
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.closedAtFbImageUrls?.forecast_component_url
+                  }
+                  alt={"fb forecast component of closed issues"}
+                  loading={"lazy"}
+                />
+              </div>
+              
+            </div>)}
+
+            {starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && <BarCharts
+              title={`Star count of every repo `}
               yaxisText={'Stars'} tooltipText={'Stars'}
               data={githubRepoData?.starsCount}
             />}
+            {!starsFlag && !forksFlag && lineIssuesFlag && !stackIssuesFlag && <LineCharts
+              title={`Issues of every repo of last 2 years`}
+              yaxisText={'Issues'} tooltipText={'Total issues'}
+              data={githubRepoData?.issuesCount}
+            />}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && stackIssuesFlag && <StackBarCharts
+              title={`created and closed issues of every repo of last 2 years`}
+              yaxisText={'Issues'} tooltipText={'Issues'} open={'open'} close={'closed'}
+              data={githubRepoData?.issuesCountOpen} second_data={githubRepoData?.issuesCountClosed}
+            />}
 
-{!starsFlag && forksFlag && <BarCharts
+{!starsFlag && forksFlag && !lineIssuesFlag && !stackIssuesFlag && <BarCharts
               title={`Fork count of every repo`}
               yaxisText={'Forks'} tooltipText={'Forks'}
               data={githubRepoData?.forksCount}
