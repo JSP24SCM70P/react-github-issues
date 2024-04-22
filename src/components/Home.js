@@ -503,6 +503,57 @@ export default function Home() {
             {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
               sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
             />)}
+            {/* Rendering Timeseries Forecasting of commits using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of branches using Tensorflow and
+                Keras LSTM 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Model Loss for Branches
+                </Typography>
+                {/* Render the model loss image for commits */}
+                <img
+                  src={githubRepoData?.branchesAtImageUrls?.model_loss_image_url}
+                  alt={"Model Loss for commits"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  LSTM Generated Data for branches
+                </Typography>
+                {/* Render the LSTM generated image for commits*/}
+                <img
+                  src={
+                    githubRepoData?.branchesAtImageUrls?.lstm_generated_image_url
+                  }
+                  alt={"LSTM Generated Data for commits"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  All Issues Data for branches
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.branchesAtImageUrls?.all_issues_data_image
+                  }
+                  alt={"All Issues Data for commits"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />)}
             {/* Rendering Timeseries Forecasting of releases using Tensorflow and
                 Keras LSTM */}
             {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
@@ -758,6 +809,56 @@ export default function Home() {
                 Keras LSTM */}
             {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
               <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of branches using <strong>StatModels</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Observation for branches
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.branchesAtStatImageUrls?.observation_url}
+                  alt={"Model Loss for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  actual vs pred statmodels of branches
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.branchesAtStatImageUrls?.stat_pred_url
+                  }
+                  alt={"LSTM Generated Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast graph with statmodels for branches
+                </Typography>
+                {/* Render the all issues data image for created issues*/}
+                <img
+                  src={
+                    githubRepoData?.branchesAtStatImageUrls?.stat_forecast_url
+                  }
+                  alt={"All Issues Data for releases"}
+                  loading={"lazy"}
+                />
+              </div>
+            </div>)}
+
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />)}
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
                 Timeseries Forecasting of releases using <strong>StatModels</strong> 
               </Typography>
 
@@ -945,6 +1046,44 @@ export default function Home() {
                 <img
                   src={
                     githubRepoData?.commitsAtFbImageUrls?.forecast_component_url
+                  }
+                  alt={"fb forecast component of pull requests"}
+                  loading={"lazy"}
+                />
+              </div>
+              
+            </div>)}
+
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<Divider
+              sx={{ borderBlockWidth: "3px", borderBlockColor: "#FFA500" }}
+            />)}
+            {/* Rendering Timeseries Forecasting of releases using Tensorflow and
+                Keras LSTM */}
+            {!starsFlag && !forksFlag && !lineIssuesFlag && !stackIssuesFlag && (<div>
+              <Typography variant="h5" component="div" gutterBottom>
+                Timeseries Forecasting of branches using <strong>Facebook Prophet</strong> 
+              </Typography>
+
+              
+              <div>
+                <Typography component="h4">
+                  Forecast for branches (fb prophet)
+                </Typography>
+                {/* Render the model loss image for releases */}
+                <img
+                  src={githubRepoData?.branchesAtFbImageUrls?.forecast_url}
+                  alt={"forecast for pull requests fb prophet"}
+                  loading={"lazy"}
+                />
+              </div>
+              <div>
+                <Typography component="h4">
+                  forecast components for branches (fb prophet)
+                </Typography>
+                {/* Render the LSTM generated image for releases*/}
+                <img
+                  src={
+                    githubRepoData?.branchesAtFbImageUrls?.forecast_component_url
                   }
                   alt={"fb forecast component of pull requests"}
                   loading={"lazy"}
