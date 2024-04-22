@@ -1,8 +1,7 @@
-Problem Statement:
-The goal of this tutorial is to use GitHub to track created and closed issues of a given repository(angular, material-design, angular-cli,D3)
-for the past year along with timeseries forecasting using Tensorflow/LSTM Keras and we will then see how to deploy it to gcloud platform.
+Links to linked services:-
+1. https://github.com/JSP24SCM70P/flask-time-series-gcp
+2. https://github.com/JSP24SCM70P/lstm-forecast
 
-Solution:
 Step 1: We are creating three microservices:
         1. React 
         2. Flask
@@ -79,7 +78,7 @@ Step 4: Deploying React to gcloud platform
 
 Step 5: To run locally, go to cmd terminal and type following: 
         1. npm install
-        2. change the url of flask of file setupProxy.js to "http://localhost:5000"
+        2. change the url of flask of file setupProxy.js to "http://127.0.0.1:5000"
         3. npm start 
 
         NOTE: IF YOU WANT TO MAKE YOUR OWN NEW REACT APP THEN GO TO CMD/TERMINAL AND TYPE "npx create-react-app your_folder_name" THAT WILL AUTOMATICALLY INSTALL "node modules",
